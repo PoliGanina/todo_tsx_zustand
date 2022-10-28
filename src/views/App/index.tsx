@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import { useToDoStore } from "../../data/stores/useToDoStore";
 import InputPlus from "../components/InputPlus";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import InputTask from "../components/InputTask";
 
 const App: React.FC = () => {
   const [tasks, createTask, removeTask, updateTask] = useToDoStore((state) => [
@@ -27,7 +28,19 @@ const App: React.FC = () => {
       </section>
       <ErrorBoundary>
         <section className={styles.articleSection}>
-          {tasks.length > 0 ? <TaskList /> : <p>No tasks yet...</p>}
+          {!tasks.length && (
+            <p className={styles.articleText}>No tasks yet...</p>
+          )}
+          {tasks.map(({ id, title }) => (
+            <InputTask
+              key={id}
+              title={title}
+              id={id}
+              onDone={removeTask}
+              onEdited={updateTask}
+              onRemoved={removeTask}
+            />
+          ))}
         </section>
       </ErrorBoundary>
     </article>
