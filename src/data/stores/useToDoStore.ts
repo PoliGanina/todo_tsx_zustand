@@ -23,7 +23,6 @@ function isToDoStore(object: any): object is ToDoStore {
 const localStorageUpdate = <T extends State> (config: StateCreator<T>): StateCreator<T> => (set, get, api) =>
   config((nextState, ...args) => {
       if (isToDoStore(nextState)) {
-        console.log('111')
         window.localStorage.setItem('tasks', JSON.stringify(nextState.tasks))
       }
       set(nextState, ...args);

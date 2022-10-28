@@ -3,7 +3,13 @@
   min-width: 600px;
   border-radius: 20px;
   padding: 20px 50px;
+  @media (max-width: 654px) {
+    min-width: 280px;
+    max-width: 2800px;
+    padding: 20px 15px;
+  }
   &Title {
+    display: inline-block;
     font-size: 40px;
     margin-bottom: 0.3em;
     text-align: center;

@@ -1,10 +1,20 @@
 .inputPlus {
+  position: relative;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 60px;
-  margin-bottom: 15px;
+  margin-bottom: 60px;
+  &::after {
+    content: "";
+    position: absolute;
+    transform: translateX(50%);
+    height: 2px;
+    background-color: gray;
+    width: 50%;
+    bottom: -25px;
+  }
   &Value {
-    border: 1px solid #b1b1b1;
+    border: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding: 9px 10px;

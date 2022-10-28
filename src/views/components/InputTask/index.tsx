@@ -62,7 +62,9 @@ const InputTask: React.FC<InputTaskProps> = ({
             className={styles.inputTaskTitleEdit}
           />
         ) : (
-          <h3 className={styles.inputTaskTitle}>{title}</h3>
+          <h3 className={styles.inputTaskTitle}>
+            {title.indexOf(" ") > -1 ? title : title.slice(0, 10) + "..."}
+          </h3>
         )}
       </label>
       {editMode ? (
@@ -70,8 +72,8 @@ const InputTask: React.FC<InputTaskProps> = ({
           aria-label="Save"
           className={styles.inputTaskSave}
           onClick={() => {
-            onEdited(id, title);
             setEditMode(false);
+            onEdited(id, title);
           }}
         />
       ) : (
